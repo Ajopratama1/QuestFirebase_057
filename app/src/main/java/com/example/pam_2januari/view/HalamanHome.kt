@@ -40,7 +40,6 @@ import com.example.pam_2januari.view.route.DestinasiHome
 import com.example.pam_2januari.viewmodel.HomeViewModel
 import com.example.pam_2januari.viewmodel.PenyediaViewModel
 import com.example.pam_2januari.viewmodel.StatusUiSiswa
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -99,7 +98,7 @@ fun HomeBody(
             is StatusUiSiswa.Loading -> LoadingScreen()
             is StatusUiSiswa.Success -> DaftarSiswa(
                 itemsSiswa = statusUiSiswa.siswa,
-                onSiswaClick = { it.id.toInt() }
+                onSiswaClick = { onSiswaClick(it.id.toInt()) }
             )
             is StatusUiSiswa.Error -> ErrorScreen(
                 retryAction = retryAction,
