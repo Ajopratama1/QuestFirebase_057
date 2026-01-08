@@ -32,3 +32,18 @@ RepositorySiswa):ViewModel() {
     init {
         getSatuSiswa()
     }
+
+    fun getSatuSiswa() {
+        viewModelScope.launch {
+            statusUIDetail = StatusUIDetail.Loading
+            statusUIDetail = try {
+                StatusUIDetail.Success(satusiswa = repositorySiswa.getSatuSiswa(idSiswa) )
+            }
+            catch (e: IOException){
+                StatusUIDetail.Error
+            }
+            catch (e: Exception) {
+                StatusUIDetail.Error
+            }
+        }
+    }
